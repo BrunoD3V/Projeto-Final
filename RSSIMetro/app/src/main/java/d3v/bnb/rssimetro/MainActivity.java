@@ -130,7 +130,7 @@ public class MainActivity extends Activity {
                 ssid = result.SSID;
                 bsssid = result.BSSID;
                 rssi = result.level;
-                if(count < 51){
+                if(count < 1000){
                     System.out.println(bsssid);
 
                     if(bsssid.equalsIgnoreCase(bssid1))
@@ -190,7 +190,7 @@ public class MainActivity extends Activity {
                 // sb.append(" RSSSI = " + rssi);
 
             }
-            if(count == 100){
+            if(count == 1000){
                 powerBssid1.clear();
                 expurgedPowersBssid1.clear();
 
