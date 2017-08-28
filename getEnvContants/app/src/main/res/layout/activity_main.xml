@@ -7,148 +7,76 @@
     tools:context="edu.projeto_final.getenvcontants.MainActivity">
 
     <EditText
-        android:id="@+id/pFundoEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="-8dp"
-        android:layout_marginTop="117dp"
-        android:ems="10"
-        android:hint="RSSI Fundo"
-        android:inputType="numberSigned|numberDecimal"
-        app:layout_constraintLeft_toRightOf="@+id/entradaEdit"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/pCisco4Edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="334dp"
-        android:ems="10"
-        android:hint="RSSI Cisco 4"
-        android:inputType="numberSigned|numberDecimal"
-        app:layout_constraintLeft_toRightOf="@+id/entradaEdit"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/pCisco3Edit"
+        android:id="@+id/pBssid3Edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="0dp"
-        android:layout_marginTop="264dp"
+        android:layout_marginTop="103dp"
         android:ems="10"
-        android:hint="RSSI Cisco 3"
+        android:hint="RSSI BSSID 3"
         android:inputType="numberSigned|numberDecimal"
-        app:layout_constraintLeft_toRightOf="@+id/entradaEdit"
+        app:layout_constraintLeft_toRightOf="@+id/bssid1Edit"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/pCisco2Edit"
+        android:id="@+id/pBssid4Edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="0dp"
-        android:layout_marginTop="221dp"
+        android:layout_marginTop="153dp"
         android:ems="10"
-        android:hint="RSSI Cisco 2"
+        android:hint="RSSI BSSID 4"
         android:inputType="numberSigned|numberDecimal"
-        app:layout_constraintLeft_toRightOf="@+id/entradaEdit"
+        app:layout_constraintLeft_toRightOf="@+id/bssid1Edit"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/pCisco1Edit"
+        android:id="@+id/pBssid2Edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="0dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="50dp"
         android:ems="10"
-        android:hint="RSSI Cisco 1"
+        android:hint="RSSI BSSID 2"
         android:inputType="numberSigned|numberDecimal"
-        app:layout_constraintLeft_toRightOf="@+id/entradaEdit"
+        app:layout_constraintLeft_toRightOf="@+id/bssid2Edit"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/pCentroEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="57dp"
-        android:ems="10"
-        android:hint="RSSI centro"
-        android:inputType="numberSigned|numberDecimal"
-        app:layout_constraintLeft_toRightOf="@+id/centroEdit"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/pEntradaEdit"
+        android:id="@+id/pBssid1Edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
         android:ems="10"
-        android:hint="RSSI Entrada"
+        android:hint="RSSI BSSID 1"
         android:inputType="numberSigned|numberDecimal"
-        app:layout_constraintLeft_toRightOf="@+id/entradaEdit"
+        app:layout_constraintLeft_toRightOf="@+id/bssid1Edit"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/fundoEdit"
+        android:id="@+id/bssid3Edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="109dp"
+        android:layout_marginTop="103dp"
         android:ems="10"
-        android:hint="dist Fundo"
-        android:inputType="numberDecimal"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/cisco4Edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="14dp"
-        android:ems="10"
-        android:hint="dist cisco4"
-        android:inputType="numberDecimal"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cisco3Edit" />
-
-    <EditText
-        android:id="@+id/cisco3Edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="277dp"
-        android:ems="10"
-        android:hint="dist cisco 3"
+        android:hint="Dist BSSID 3"
         android:inputType="numberDecimal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/cisco2Edit"
+        android:id="@+id/bssid4Edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="221dp"
+        android:layout_marginTop="61dp"
         android:ems="10"
-        android:hint="dist cisco 2"
+        android:hint="Dist BSSID 4"
         android:inputType="numberDecimal"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/cisco1Edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="75dp"
-        android:ems="10"
-        android:hint="dist Cisco 1"
-        android:inputType="numberDecimal"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/centroEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/bssid2Edit" />
 
     <TextView
         android:id="@+id/textView"
@@ -156,28 +84,28 @@
         android:layout_height="wrap_content" />
 
     <EditText
-        android:id="@+id/entradaEdit"
+        android:id="@+id/bssid1Edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="0dp"
         android:ems="10"
-        android:hint="Dist Entrada"
+        android:hint="Dist BSSID 1"
         android:inputType="numberDecimal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/centroEdit"
+        android:id="@+id/bssid2Edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="7dp"
         android:ems="10"
-        android:hint="dist Centro"
+        android:hint="Dist BSSID 2"
         android:inputType="numberDecimal"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/entradaEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/bssid1Edit" />
 
     <Button
         android:id="@+id/calcBtn"
@@ -186,8 +114,8 @@
         android:onClick="onClickCalcBtn"
         android:text="Calcular"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="408dp"
-        android:layout_marginLeft="145dp"
+        android:layout_marginTop="231dp"
+        android:layout_marginLeft="154dp"
         app:layout_constraintLeft_toLeftOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

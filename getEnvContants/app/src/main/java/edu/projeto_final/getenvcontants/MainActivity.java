@@ -5,30 +5,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.commons.math3.linear.LUDecomposition;
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
-import org.apache.commons.math3.util.DoubleArray;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText entradaEdit;
-    EditText centroEdit;
-    EditText fundoEdit;
-    EditText cisco1Edit;
-    EditText cisco2Edit;
-    EditText cisco3Edit;
-    EditText cisco4Edit;
-    EditText pEntradaEdit;
-    EditText pCentroEdit;
-    EditText pFundoEdit;
-    EditText pCisco1Edit;
-    EditText pCisco2Edit;
-    EditText pCisco3Edit;
-    EditText pCisco4Edit;
+    EditText Bssid1Edit;
+    EditText Bssid2Edit;
+    EditText Bssid3Edit;
+    EditText Bssid4Edit;
+
+    EditText pBssid1Edit;
+    EditText pBssid2Edit;
+    EditText pBssid3Edit;
+    EditText pBssid4Edit;
+
 
 
     @Override
@@ -36,56 +30,40 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        entradaEdit = (EditText) findViewById(R.id.entradaEdit);
-        centroEdit = (EditText) findViewById(R.id.centroEdit);
-        fundoEdit = (EditText) findViewById(R.id.fundoEdit);
-        cisco1Edit = (EditText) findViewById(R.id.cisco1Edit);
-        cisco2Edit = (EditText) findViewById(R.id.cisco2Edit);
-        cisco3Edit = (EditText) findViewById(R.id.cisco3Edit);
-        cisco4Edit = (EditText) findViewById(R.id.cisco4Edit);
+        Bssid1Edit = (EditText) findViewById(R.id.bssid1Edit);
+        Bssid2Edit = (EditText) findViewById(R.id.bssid2Edit);
+        Bssid3Edit = (EditText) findViewById(R.id.bssid3Edit);
+        Bssid4Edit = (EditText) findViewById(R.id.bssid4Edit);
 
-        pEntradaEdit = (EditText) findViewById(R.id.pEntradaEdit);
-        pCentroEdit = (EditText) findViewById(R.id.pCentroEdit);
-        pFundoEdit = (EditText) findViewById(R.id.pFundoEdit);
-        pCisco1Edit = (EditText) findViewById(R.id.pCisco1Edit);
-        pCisco2Edit = (EditText) findViewById(R.id.pCisco2Edit);
-        pCisco3Edit = (EditText) findViewById(R.id.pCisco3Edit);
-        pCisco4Edit = (EditText) findViewById(R.id.pCisco4Edit);
+
+        pBssid1Edit = (EditText) findViewById(R.id.pBssid1Edit);
+        pBssid2Edit = (EditText) findViewById(R.id.pBssid2Edit);
+        pBssid3Edit = (EditText) findViewById(R.id.pBssid3Edit);
+        pBssid4Edit = (EditText) findViewById(R.id.pBssid4Edit);
+
         Calc();
-
-
-
     }
 
     public void onClickCalcBtn(View v){
 
-        if(isEmpty(entradaEdit) || isEmpty(centroEdit) || isEmpty(fundoEdit) || isEmpty(cisco1Edit)
-                || isEmpty(cisco2Edit)  || isEmpty(cisco3Edit) || isEmpty(cisco4Edit)  || isEmpty(pEntradaEdit)
-                || isEmpty(pCentroEdit) || isEmpty(pFundoEdit) || isEmpty(pCisco1Edit) || isEmpty(pCisco2Edit)
-                || isEmpty(pCisco3Edit)  ||isEmpty(pCisco4Edit)){
+        if(isEmpty(Bssid1Edit) || isEmpty(Bssid2Edit) || isEmpty(Bssid3Edit) || isEmpty(Bssid4Edit)
+                || isEmpty(pBssid1Edit) || isEmpty(pBssid2Edit) || isEmpty(pBssid3Edit) || isEmpty(pBssid4Edit) ){
             Toast.makeText(getApplicationContext(),"Tem que preencher todos os campos",Toast.LENGTH_LONG).show();
             return;
         }
-        double dE = Double.valueOf(entradaEdit.getText().toString());
-        double dC = Double.valueOf(centroEdit.getText().toString());
-        double dF = Double.valueOf(fundoEdit.getText().toString());
-        double dC1 = Double.valueOf(cisco1Edit.getText().toString());
-        double dC2 = Double.valueOf(cisco2Edit.getText().toString());
-        double dC3 = Double.valueOf(cisco3Edit.getText().toString());
-        double dC4 = Double.valueOf(cisco4Edit.getText().toString());
+        double dB1 = Double.valueOf(Bssid1Edit.getText().toString());
+        double dB2 = Double.valueOf(Bssid2Edit.getText().toString());
+        double dB3 = Double.valueOf(Bssid3Edit.getText().toString());
+        double dB4 = Double.valueOf(Bssid4Edit.getText().toString());
 
-        double pE = Double.valueOf(pEntradaEdit.getText().toString());
-        double pC = Double.valueOf(pCentroEdit.getText().toString());
-        double pF = Double.valueOf(pFundoEdit.getText().toString());
-        double pC1 = Double.valueOf(pCisco1Edit.getText().toString());
-        double pC2 = Double.valueOf(pCisco2Edit.getText().toString());
-        double pC3 = Double.valueOf(pCisco3Edit.getText().toString());
-        double pC4 = Double.valueOf(pCisco4Edit.getText().toString());
+        double pB1 = Double.valueOf(pBssid1Edit.getText().toString());
+        double pB2 = Double.valueOf(pBssid2Edit.getText().toString());
+        double pB3 = Double.valueOf(pBssid3Edit.getText().toString());
+        double pB4 = Double.valueOf(pBssid4Edit.getText().toString());
 
-        double [][] data = {{1,10*Math.log10(dE)}, {1, 10*Math.log10(dC)},
-                {1, 10*Math.log10(dF)}, {1, 10 * Math.log10(dC1)}, {1, 10 * Math.log10(dC2)},
-                {1, 10 * Math.log10(dC3)}, {1, 10 * Math.log10(dC4)}};
-        double [][] Pot = {{pE}, {pC}, {pF}, {pC1}, {pC2}, {pC3}, {pC4}};
+        double [][] data = {{1,10*Math.log10(dB1)}, {1, 10*Math.log10(dB2)},
+                {1, 10*Math.log10(dB3)}, {1, 10 * Math.log10(dB4)}};
+        double [][] Pot = {{pB1}, {pB2}, {pB3}, {pB4}};
         //  double [][] inv = {{4,14}, {14,54}};
         RealMatrix M = MatrixUtils.createRealMatrix(data);
         RealMatrix RSSI = MatrixUtils.createRealMatrix(Pot);
