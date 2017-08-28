@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="D:\AndroidProjects\RSSIMetro\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="C:\Users\pedro\Documents\GitHub\rsi\RSSIMetro\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
-        sha1="7bd9e53f07095f262f9c235c879e5733765d513f">
-        <dex dex="D:\AndroidProjects\RSSIMetro\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_5e7b6ff1bfb6783c4c4bc48eb2d0952a37838279\classes.dex" />
+        sha1="838242ceddde3dba135043b17584fadb9cf405a2">
+        <dex dex="C:\Users\pedro\Documents\GitHub\rsi\RSSIMetro\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_ed16d904ee9ffa666ac098c7e9c7c3135553831e\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="D:\AndroidProjects\RSSIMetro\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="C:\Users\pedro\Documents\GitHub\rsi\RSSIMetro\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="D:\AndroidProjects\RSSIMetro\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_24e851ed3bcaef336bfa87e53880f89d3acc2912\classes.dex" />
+        <dex dex="C:\Users\pedro\Documents\GitHub\rsi\RSSIMetro\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_f8acc1fd246b28d7865e4e5ed209a7c3c96ed220\classes.dex" />
     </item>
 
 </items>
