@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         //  double dist = Math.pow(10,exp);
         // double teste = 10 * Math.log10(7.84);
         String resultados = Rfinal.toString();
-        for(int i = 0; i <=6; i++){
+        for(int i = 0; i <=3; i++){
             double exp = (Rfinal.getEntry(0,0)- RSSI.getEntry(i,0))/(-10 *Rfinal.getEntry(1,0) );
             double dist = Math.pow(10, exp);
             double error = Math.abs(Math.pow(10, M.getEntry(i,1)/10) - dist)/Math.pow(10,M.getEntry(i,1)/10);
