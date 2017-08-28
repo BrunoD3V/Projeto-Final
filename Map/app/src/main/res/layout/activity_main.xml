@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="d3v.bnb.map.MainActivity">
+
+
+    <ImageView
+        android:id="@+id/map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:pointerIcon="arrow"
+        android:visibility="visible"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:srcCompat="@drawable/mapabiblioteca_" />
+
+    <ImageView
+        android:id="@+id/cursor"
+        android:layout_width="19dp"
+        android:layout_height="14dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@mipmap/marker" />
+
+</android.support.constraint.ConstraintLayout>
