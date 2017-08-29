@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
         RealMatrix M = MatrixUtils.createRealMatrix(data);
         RealMatrix RSSI = MatrixUtils.createRealMatrix(Pot);
         RealMatrix T = M.transpose();
-
         RealMatrix Res = T.multiply(M);
 
         // RealMatrix Inv = MatrixUtils.createRealMatrix(inv);
