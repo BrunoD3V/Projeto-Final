@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "563986757047",
+    "firebase_url": "https://wimarket-56f69.firebaseio.com",
+    "project_id": "wimarket-56f69",
+    "storage_bucket": "wimarket-56f69.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563986757047:android:3c9d4934d5ee6233",
+        "android_client_info": {
+          "package_name": "d3v.bnb.wifidatabase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "563986757047-bpspc6ms7ejimbksp6aipmrni8ue2cab.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "d3v.bnb.wifidatabase",
+            "certificate_hash": "ee07cf3dc6ec2922fa7d531a02566880c59c14f6"
+          }
+        },
+        {
+          "client_id": "563986757047-fdacse39r5p7q6fnip21rqeb1vrft06c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbocKFCYlMYFoV0PUC26L0mCNKsA1NHMo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "563986757047-fdacse39r5p7q6fnip21rqeb1vrft06c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

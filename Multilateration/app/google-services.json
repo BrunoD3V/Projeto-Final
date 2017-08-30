@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "473916760121",
+    "firebase_url": "https://multilateration-4c70b.firebaseio.com",
+    "project_id": "multilateration-4c70b",
+    "storage_bucket": "multilateration-4c70b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:473916760121:android:d1ac706845568843",
+        "android_client_info": {
+          "package_name": "edu.projeto_final.multilateration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "473916760121-2u7scnbdvgkccubp3076javo5e9vml2e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.projeto_final.multilateration",
+            "certificate_hash": "ee07cf3dc6ec2922fa7d531a02566880c59c14f6"
+          }
+        },
+        {
+          "client_id": "473916760121-49dmipgd2ftieenektcspvo3f79su876.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoG0auIZ9dBf4gw0Lqk7GFNb3Ef-gqmAU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "473916760121-49dmipgd2ftieenektcspvo3f79su876.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

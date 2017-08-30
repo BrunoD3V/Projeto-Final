@@ -7,11 +7,16 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.apache.commons.math3.linear.LUDecomposition;
 import org.apache.commons.math3.linear.MatrixUtils;
@@ -26,6 +31,30 @@ public class MainActivity extends Activity {
     WifiReceiver receiverWifi;
     List<ScanResult> wifiList;
 
+    FirebaseDatabase database;
+    private DatabaseReference databaseRef;
+
+    private int newID = 0;
+
+    EditText edtPos;
+    EditText edtX;
+    EditText edtY;
+    EditText edtD1;
+    EditText edtD2;
+    EditText edtD3;
+    EditText edtD4;
+
+    Button btnClear;
+    Button btnUpdate;
+    Button btnStoreDB;
+
+    List<Integer> powersBssid1 = new ArrayList<>();
+    List<Integer> powersBssid2 = new ArrayList<>();
+    List<Integer> powersBssid3 = new ArrayList<>();
+    List<Integer> powersBssid4 = new ArrayList<>();
+
+    private int count = 0;
+
     private IntentFilter filter = new IntentFilter();
 
     private double d1;
@@ -33,9 +62,21 @@ public class MainActivity extends Activity {
     private double d3;
     private double d4;
 
+    private double rX;
+    private double rY;
+    private double rD1;
+    private double rD2;
+    private double rD3;
+    private double rD4;
+
+    private double eX;
+    private double eY;
+    private double eD1;
+    private double eD2;
+    private double eD3;
+    private double eD4;
+
     StringBuilder sb = new StringBuilder();
-
-
 
     final static String bssid1 = "18:d6:c7:51:7b:38";
     final static String bssid2 = "18:d6:c7:51:7d:44";
@@ -57,17 +98,89 @@ public class MainActivity extends Activity {
     final static double x4 = 2.81;
     final static double y4 = 3.46;
 
-
-
-
-
+    private double x;
+    private double y;
 
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mainText = (TextView) findViewById(R.id.mainText);
+        mainText = findViewById(R.id.mainText);
         mainWifi = (WifiManager) this.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+
+        database = FirebaseDatabase.getInstance();
+        databaseRef = database.getReference();
+
+        edtPos = findViewById(R.id.edtPos);
+        edtX = findViewById(R.id.edtX);
+        edtY = findViewById(R.id.edtY);
+        edtD1 = findViewById(R.id.edtD1);
+        edtD2 = findViewById(R.id.edtD2);
+        edtD3 = findViewById(R.id.edtD3);
+        edtD4 = findViewById(R.id.edtD4);
+
+        btnClear = findViewById(R.id.btnClear);
+        btnClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                edtPos.setText("");
+                edtX.setText("");
+                edtY.setText("");
+                edtD1.setText("");
+                edtD2.setText("");
+                edtD3.setText("");
+                edtD4.setText("");
+            }
+        });
+
+        btnStoreDB = findViewById(R.id.btnStoreDB);
+        btnStoreDB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String posID = "pos" + edtPos.getText().toString() + "_" + generateID();
+
+                databaseRef.child("medicoes").child(posID).child("x").setValue(x);
+                databaseRef.child("medicoes").child(posID).child("y").setValue(y);
+                databaseRef.child("medicoes").child(posID).child("d1").setValue(d1);
+                databaseRef.child("medicoes").child(posID).child("d2").setValue(d2);
+                databaseRef.child("medicoes").child(posID).child("d3").setValue(d3);
+                databaseRef.child("medicoes").child(posID).child("d4").setValue(d4);
+                databaseRef.child("medicoes").child(posID).child("eX").setValue(eX);
+                databaseRef.child("medicoes").child(posID).child("eY").setValue(eY);
+                databaseRef.child("medicoes").child(posID).child("eD1").setValue(eD1);
+                databaseRef.child("medicoes").child(posID).child("eD2").setValue(eD2);
+                databaseRef.child("medicoes").child(posID).child("eD3").setValue(eD3);
+                databaseRef.child("medicoes").child(posID).child("eD4").setValue(eD4);
+                databaseRef.child("medicoes").child(posID).child("rX").setValue(rX);
+                databaseRef.child("medicoes").child(posID).child("rY").setValue(rY);
+                databaseRef.child("medicoes").child(posID).child("rD1").setValue(rD1);
+                databaseRef.child("medicoes").child(posID).child("rD2").setValue(rD2);
+                databaseRef.child("medicoes").child(posID).child("rD3").setValue(rD3);
+                databaseRef.child("medicoes").child(posID).child("rD4").setValue(rD4);
+            }
+        });
+        btnUpdate = findViewById(R.id.btnUpdate);
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(!isEmpty(edtX) && !isEmpty(edtY) && !isEmpty(edtD1) && !isEmpty(edtD2) && !isEmpty(edtD3) && !isEmpty(edtD4)){
+                    count = 0;
+                    powersBssid1.clear();
+                    powersBssid2.clear();
+                    powersBssid3.clear();
+                    powersBssid4.clear();
+
+                    rX = Double.valueOf(edtX.getText().toString());
+                    rY = Double.valueOf(edtY.getText().toString());
+                    rD1 = Double.valueOf(edtD1.getText().toString());
+                    rD2 = Double.valueOf(edtD2.getText().toString());
+                    rD3 = Double.valueOf(edtD3.getText().toString());
+                    rD4 = Double.valueOf(edtD4.getText().toString());
+
+                }
+            }
+        });
 
         receiverWifi = new WifiReceiver();
         registerReceiver(receiverWifi, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
@@ -99,6 +212,8 @@ public class MainActivity extends Activity {
     class WifiReceiver extends BroadcastReceiver {
         public void onReceive(Context c, final Intent intent) {
 
+            if(count <= 100)
+                count ++;
 
             if (WifiManager.SCAN_RESULTS_AVAILABLE_ACTION.equals(intent.getAction())) {
                 registerReceiver(receiverWifi, filter);
@@ -111,26 +226,57 @@ public class MainActivity extends Activity {
 
             String bsssid;
             int rssi;
+
             for (int i = 1; i < wifiList.size(); i++) {
+
                 result = wifiList.get(i);
-
                 bsssid = result.BSSID;
-
                 rssi = result.level;
 
+
                 if(bsssid.equalsIgnoreCase(bssid1))
-                    d1 = getDistance(rssi);
+                    powersBssid1.add(rssi);
 
                 if(bsssid.equalsIgnoreCase(bssid2))
-                    d2 = getDistance(rssi);
+                    powersBssid2.add(rssi);
 
                 if(bsssid.equalsIgnoreCase(bssid3))
-                    d3 = getDistance(rssi);
+                    powersBssid3.add(rssi);
 
                 if(bsssid.equalsIgnoreCase(bssid4))
-                    d4 = getDistance(rssi);
-            }
+                    powersBssid4.add(rssi);
 
+                if(count == 100){
+                    double mediaBssid1 = meanRssi(powersBssid1);
+                    double desvioPadraoBssid1 = getStdDev(powersBssid1, mediaBssid1);
+                    List<Integer> expurgedPowersBssid1 = expurgePowers(powersBssid1, mediaBssid1, desvioPadraoBssid1);
+                    double mediaExpurgadaBssid1 = meanRssi(expurgedPowersBssid1);
+
+                    double mediaBssid2 = meanRssi(powersBssid2);
+                    double desvioPadraoBssid2 = getStdDev(powersBssid2, mediaBssid2);
+                    List<Integer> expurgedPowersBssid2 = expurgePowers(powersBssid2, mediaBssid2, desvioPadraoBssid2);
+                    double mediaExpurgadaBssid2 = meanRssi(expurgedPowersBssid2);
+
+                    double mediaBssid3 = meanRssi(powersBssid3);
+                    double desvioPadraoBssid3 = getStdDev(powersBssid3, mediaBssid3);
+                    List<Integer> expurgedPowersBssid3 = expurgePowers(powersBssid3, mediaBssid3, desvioPadraoBssid3);
+                    double mediaExpurgadaBssid3 = meanRssi(expurgedPowersBssid3);
+
+                    double mediaBssid4 = meanRssi(powersBssid4);
+                    double desvioPadraoBssid4 = getStdDev(powersBssid4, mediaBssid4);
+                    List<Integer> expurgedPowersBssid4 = expurgePowers(powersBssid4, mediaBssid4, desvioPadraoBssid4);
+                    double mediaExpurgadaBssid4 = meanRssi(expurgedPowersBssid4);
+
+                    d1 = getDistance(mediaExpurgadaBssid1);
+                    eD1 = getError(rD1,d1);
+                    d2 = getDistance(mediaExpurgadaBssid2);
+                    eD2 = getError(rD2,d2);
+                    d3 = getDistance(mediaExpurgadaBssid3);
+                    eD3 = getError(rD3,d3);
+                    d4 = getDistance(mediaExpurgadaBssid4);
+                    eD4 = getError(rD4,d4);
+                }
+            }
 
             double[][] distDif = {{2 * x1 - 2 * x2, 2 * y1 - 2 * y2}, {2 * x1 - 2 * x3,
                     2 * y1 - 2 * y3}, {2 * x1 - 2 * x4, 2 * y1 - 2 * y4}};
@@ -153,30 +299,64 @@ public class MainActivity extends Activity {
 
             A = A.multiply(B);
 
-            double x = A.getEntry(0,0);
-            double y = A.getEntry(1,0);
-            String posicao = "x : " + x + " y : " + y;
-            String dist = "\nd1 :" + d1 + "\n d2 : " + d2 + " \n d3 : " + d3 + "\n d4 : " + d4;
+            x = A.getEntry(0,0);
+            eX = getError(rX,x);
+            y = A.getEntry(1,0);
+            eY = getError(rY, y);
+            String posicao = "x: " + x + "\ny: " + y;
+            String dist = "\nd1: " + d1 + "\nd2: " + d2 + " \nd3: " + d3 + "\nd4: " + d4;
+            String errors = "\neX: " + eX + " eY: " + eY + "\neD1: " + eD1 + "\neD2: " + eD2 + "\neD3: " + eD3 + "\neD4: " + eD4 + "\n";
+            sb.append(errors);
             sb.append(posicao);
             sb.append(dist);
+            sb.append("\nCount= " + count);
             mainText.setText(sb);
-
-
-
-
-
-
         }
-
     }
 
-    private double getDistance(int RSSI){
+    private int generateID(){
+        return ++newID;
+    }
+
+    private double getError(double realValue, double calcValue){
+
+        return (calcValue-realValue)/realValue;
+    }
+
+    private double meanRssi(List<Integer> rssis){
+        double aux = 0.0;
+        for(Integer i: rssis){
+            aux += i;
+        }
+        return aux/rssis.size();
+    }
+
+    private double getStdDev(List<Integer> rssis, double mean){
+        double aux = 0;
+        for(Integer i: rssis){
+            aux += (i - mean) * (i - mean);
+        }
+        return Math.sqrt(aux/rssis.size());
+    }
+    private List<Integer> expurgePowers(List<Integer> rssis, double mean, double stddev){
+        List<Integer> expurgedPower = new ArrayList<>();
+        for(Integer i: rssis){
+            if(i >= mean - 2 * stddev){
+                expurgedPower.add(i);
+            }
+        }
+        return expurgedPower;
+    }
+
+    private double getDistance(double RSSI){
 
         double exp = (c + RSSI) / (-10 * n);
         double dist = Math.pow(10, exp);
         return dist;
     }
 
-
+    private boolean isEmpty(EditText etText) {
+        return etText.getText().toString().trim().length() == 0;
+    }
 }
 
