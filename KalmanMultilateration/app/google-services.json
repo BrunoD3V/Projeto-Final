@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "875949454172",
+    "firebase_url": "https://kalmanmultilateration.firebaseio.com",
+    "project_id": "kalmanmultilateration",
+    "storage_bucket": "kalmanmultilateration.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:875949454172:android:6bae9be0e0a96a94",
+        "android_client_info": {
+          "package_name": "d3v.bnb.kalmanmultilateration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "875949454172-393551iuc9avbeeaseh4v7iblge89npg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "d3v.bnb.kalmanmultilateration",
+            "certificate_hash": "ee07cf3dc6ec2922fa7d531a02566880c59c14f6"
+          }
+        },
+        {
+          "client_id": "875949454172-9hm3larfrj6dcak66evmigilup545e80.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4DvsJjhRP-8T0EtOOrcMR8ANQz--wykM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "875949454172-9hm3larfrj6dcak66evmigilup545e80.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
