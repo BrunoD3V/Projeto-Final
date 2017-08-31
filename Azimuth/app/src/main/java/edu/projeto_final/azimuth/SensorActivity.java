@@ -6,12 +6,16 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Handler;
 import android.os.Bundle;
 
 public class SensorActivity extends Activity implements SensorEventListener {
 
     private SensorManager mSensorManager;
+
+    protected Handler handler;
+    protected Runnable runnable;
+
     private final float[] mAccelerometerReading = new float[3];
     private final float[] mMagnetometerReading = new float[3];
 
@@ -27,7 +31,6 @@ public class SensorActivity extends Activity implements SensorEventListener {
         while(true){
             updateOrientationAngles();
         }
-
     }
 
     @Override
@@ -40,26 +43,19 @@ public class SensorActivity extends Activity implements SensorEventListener {
     protected void onResume() {
         super.onResume();
 
-        // Get updates from the accelerometer and magnetometer at a constant rate.
-        // To make batch operations more efficient and reduce power consumption,
-        // provide support for delaying updates to the application.
-        //
-        // In this example, the sensor reporting delay is small enough such that
-        // the application receives an update before the system checks the sensor
-        // readings again.
         mSensorManager.registerListener(this,mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
                 SensorManager.SENSOR_DELAY_NORMAL, SensorManager.SENSOR_DELAY_UI);
         mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD),
                 SensorManager.SENSOR_DELAY_NORMAL, SensorManager.SENSOR_DELAY_UI);
 
+        handler.post(runnable);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-
-        // Don't receive any more updates from either sensor.
         mSensorManager.unregisterListener(this);
+        handler.removeCallbacks(runnable);
     }
 
     // Get readings from accelerometer and magnetometer. To simplify calculations,
@@ -83,13 +79,10 @@ public class SensorActivity extends Activity implements SensorEventListener {
         mSensorManager.getRotationMatrix(mRotationMatrix, null,
                 mAccelerometerReading, mMagnetometerReading);
        // float orientationData[] = new float[3];
-
      //   mSensorManager.getOrientation(mRotationMatrix, orientationData);
-
      //   float azimuth = orientationData[0];
+       // mSensorManager.getOrientation(mRotationMatrix)
 
-
-       // mSensorManager.getOrientation(mRotationMatrix.)
         // "mRotationMatrix" now has up-to-date information.
 
         mSensorManager.getOrientation(mRotationMatrix, mOrientationAngles);
