@@ -163,6 +163,8 @@ public class MainActivity extends Activity {
     private double x;
     private double y;
 
+    int k = 0;
+
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -335,8 +337,11 @@ public class MainActivity extends Activity {
 
                 if(bsssid.equalsIgnoreCase(bssid4))
                     powersBssid4.add(rssi);
+              //  System.out.println("count " + count);
 
-                if(count % 100 == 0 || count == 1000){
+                if(count % 100 == 0){
+                    k++;
+                    System.out.println(" dentro do if " + k + " vezes" + "\ncount = " + count);
                     double mediaBssid1 = meanCalc(powersBssid1);
                     double desvioPadraoBssid1 = getStdDev(powersBssid1, mediaBssid1);
                     List<Integer> expurgedPowersBssid1 = expurgePowers(powersBssid1, mediaBssid1, desvioPadraoBssid1);
